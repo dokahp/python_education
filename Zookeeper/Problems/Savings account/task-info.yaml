@@ -1,0 +1,18 @@
+type: code
+files:
+- name: task.py
+  visible: true
+  text: |-
+    amount = 1000
+    interest_rate = 5
+    years = 1
+    # change the next line
+    income = ...
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/5876
+status: Solved
+feedback:
+  message: <html>Correct solution<br/><br/>Continue on <a href="https://hyperskill.org/learn/step/5876">JetBrains
+    Academy</a></html>
+  time: Mon, 29 Jun 2020 21:43:04 UTC
+record: -1
