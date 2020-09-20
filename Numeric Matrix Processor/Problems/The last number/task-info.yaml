@@ -1,0 +1,15 @@
+type: code
+files:
+- name: main.py
+  visible: true
+  text: |-
+    # use this tuple
+    numbers = tuple(int(n) for n in input().split())
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7471
+status: Solved
+feedback:
+  message: <html>Correct solution<br/><br/>Continue on <a href="https://hyperskill.org/learn/step/7471">JetBrains
+    Academy</a></html>
+  time: Thu, 17 Sep 2020 16:34:20 UTC
+record: -1
