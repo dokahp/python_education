@@ -1,6 +1,7 @@
 from collections import deque
 import re
 import string
+
 variables = {}
 
 
@@ -63,7 +64,7 @@ And also work with variables!""")
 
 
 def check_correct_sign(infix):
-    for i in range(2,10):
+    for i in range(2, 10):
         return False if infix.count('*' * i) > 0 or infix.count('/' * i) > 0 else True
 
 
@@ -78,7 +79,7 @@ def check_correctness_expression(infix):
 
 
 def check_binary_operation(infix):  # Преобразовываем множество знаков в один знак
-    plus, minus, mult, delenie, i = '+', '-', '*', '/', 10
+    plus, minus,  i = '+', '-', 10
     while i != 1:
         infix = infix.replace(plus * i, '+')
         if i % 2 == 0:
@@ -97,6 +98,7 @@ def give_correct_expression(infix):
     infix = re.sub(r'\s+', ' ', infix)  # Удаляем лишние пробелы, чтобы постфиксная функция работала верно
     return infix
 
+
 def define_sign_and_calculate(first_digit, second_digit, sign):
     if sign == '+':
         return first_digit + second_digit
@@ -105,7 +107,11 @@ def define_sign_and_calculate(first_digit, second_digit, sign):
     elif sign == '*':
         return first_digit * second_digit
     elif sign == '/':
-        return first_digit / second_digit
+        try:
+            return first_digit / second_digit
+        except ZeroDivisionError:
+            print('You cannot divide by zero')
+            main()
     elif sign == '^':
         return first_digit ** second_digit
 
@@ -195,7 +201,8 @@ def main():
     elif is_variable_expression(infix):
         if check_correctness_expression(infix):  # Проверка правельности скобок
             if check_correct_sign(infix):
-                infix = give_correct_expression(check_binary_operation(infix))  # Добавляем пробелы и проверяем на бинарные +-
+                infix = give_correct_expression(
+                    check_binary_operation(infix))  # Добавляем пробелы и проверяем на бинарные +-
                 replaced_list = replace_variable(infix.split())  # Меняем переменные на их значения
                 conv = ConversationToPostfix(len(infix))
                 print(calculate_postfix(conv.infix_to_postfix(replaced_list)))
@@ -209,7 +216,8 @@ def main():
     elif is_digit_expression(infix):
         if check_correctness_expression(infix):  # Проверка правельности скобок
             if check_correct_sign(infix):
-                infix = give_correct_expression(check_binary_operation(infix))  # Добавляем пробелы и проверяем на бинарные +-
+                infix = give_correct_expression(
+                    check_binary_operation(infix))  # Добавляем пробелы и проверяем на бинарные +-
                 conv = ConversationToPostfix(len(infix))
                 print(calculate_postfix(conv.infix_to_postfix(infix.split())))
                 main()
