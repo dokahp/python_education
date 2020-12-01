@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume</title>
+</head>
+<body>
+{% for res in resume%}
+<div>{{res.author}}: {{res.description}}</div>
+{%endfor%}
+</body>
+</html>

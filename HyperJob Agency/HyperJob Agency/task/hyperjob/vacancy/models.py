@@ -1,0 +1,10 @@
+from django.db import models
+from django.db.models import CharField, ForeignKey
+from django.contrib.auth.models import User
+
+
+# Create your models here.
+
+class Vacancy(models.Model):
+    author = ForeignKey(User, related_name='author_vacancy', on_delete=models.CASCADE)
+    description = CharField(max_length=1024)
